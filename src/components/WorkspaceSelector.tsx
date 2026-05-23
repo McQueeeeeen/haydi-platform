@@ -184,7 +184,7 @@ export default memo(function WorkspaceSelector({ onTriggerConsultation }: Worksp
                     <img 
                       src={currentRoom.imageUrl} 
                       alt={currentRoom.title} 
-                      className="w-full h-full object-cover filter brightness-65 contrast-102"
+                      className="w-full h-full object-cover filter brightness-80"
                       loading="lazy"
                       width={640}
                       height={280}

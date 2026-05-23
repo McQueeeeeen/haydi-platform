@@ -139,14 +139,13 @@ export default memo(function Collections({ onSelectCollection, onOpenCatalog }: 
                 <img 
                   src="/assets/images/col-featured-desktop.webp" 
                   alt={largeFeatured.title} 
-                  className="w-full h-full object-cover transform scale-101 group-hover:scale-105 transition-all duration-750 ease-out filter brightness-[0.55] contrast-[1.05]"
+                  className="w-full h-full object-cover transform scale-101 group-hover:scale-105 transition-all duration-750 ease-out filter brightness-75 group-hover:brightness-[0.85]"
                   loading="lazy"
                   width={500}
                   height={620}
                 />
               </picture>
-              <div className="absolute inset-0 bg-gradient-to-t from-[#150f0c] via-black/40 to-transparent" />
-              <div className="absolute inset-0 bg-[#211612]/20 mix-blend-color-burn" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#150f0c] via-black/25 to-transparent" />
             </div>
 
             {/* Top row */}
@@ -199,14 +198,13 @@ export default memo(function Collections({ onSelectCollection, onOpenCatalog }: 
                     <img 
                       src={card.imageUrl} 
                       alt={card.title} 
-                      className="w-full h-full object-cover transform scale-101 group-hover:scale-105 transition-all duration-750 ease-out filter brightness-[0.55] contrast-[1.05]"
+                      className="w-full h-full object-cover transform scale-101 group-hover:scale-105 transition-all duration-750 ease-out filter brightness-75 group-hover:brightness-[0.85]"
                       loading="lazy"
                       width={400}
                       height={300}
                     />
                   </picture>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#150f0c] via-black/40 to-transparent" />
-                  <div className="absolute inset-0 bg-[#211612]/20 mix-blend-color-burn" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#150f0c] via-black/25 to-transparent" />
                 </div>
 
                 <div className="relative z-10 p-6 md:p-8">
@@ -249,14 +247,13 @@ export default memo(function Collections({ onSelectCollection, onOpenCatalog }: 
                   <img 
                     src={card.imageUrl} 
                     alt={card.title} 
-                    className="w-full h-full object-cover transform scale-101 group-hover:scale-105 transition-all duration-750 ease-out filter brightness-[0.55] contrast-[1.05]"
+                    className="w-full h-full object-cover transform scale-101 group-hover:scale-105 transition-all duration-750 ease-out filter brightness-75 group-hover:brightness-[0.85]"
                     loading="lazy"
                     width={400}
                     height={340}
                   />
                 </picture>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#150f0c] via-black/40 to-transparent" />
-                <div className="absolute inset-0 bg-[#211612]/20 mix-blend-color-burn" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#150f0c] via-black/25 to-transparent" />
               </div>
 
               <div className="relative z-10 p-6 md:p-8">
