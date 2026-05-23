@@ -1,0 +1,6 @@
+{
+  "name": "Haydi.kz — Салон освещения",
+  "description": "Премиальный dark cinematic лендинг для салона освещения Haydi.kz в Караганде. Продажа дизайнерских люстр, бра, подвесов, спотов и софитов.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
