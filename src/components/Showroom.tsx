@@ -25,17 +25,6 @@ export default memo(function Showroom({ onOpenTrigger }: ShowroomProps) {
     return () => clearInterval(interval);
   }, []);
 
-  const handleRouteClick = () => {
-    // Open direct coordinates route mapping / 2GIS or Google Maps relative link for Karaganda
-    const externalLink = 'https://yandex.com/maps/?text=Караганда+улица+Гоголя+53а';
-    window.open(externalLink, '_blank', 'noopener,noreferrer');
-  };
-
-  const handleWhatsAppClick = () => {
-    const textQuery = encodeURIComponent('Здравствуйте, я с сайта Haydi.kz. Хочу проконсультироваться по подбору освещения.');
-    window.open(`https://wa.me/77015554321?text=${textQuery}`, '_blank', 'noopener,noreferrer');
-  };
-
   const easeCurve = [0.22, 1, 0.36, 1];
 
   return (
@@ -154,21 +143,25 @@ export default memo(function Showroom({ onOpenTrigger }: ShowroomProps) {
 
               {/* Instant Messenger and Navigation CTA Buttons */}
               <div className="mt-8 space-y-3">
-                <button
-                  onClick={handleWhatsAppClick}
+                <a
+                  href="https://wa.me/77015554321?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%2C%20%D1%8F%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Haydi.kz.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%BE%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%D1%81%D1%8F%20%D0%BF%D0%BE%20%D0%BF%D0%BE%D0%B4%D0%B1%D0%BE%D1%80%D1%83%20%D0%BE%D1%81%D0%B2%D0%B5%D1%89%D0%B5%D0%BD%D0%B8%D1%8F."
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full h-12 rounded-full bg-[#25D366] text-black hover:bg-[#20ba59] text-xs font-bold flex items-center justify-center gap-2 cursor-pointer transition-all duration-300 transform active:scale-98"
                 >
                   <MessageCircle size={15} />
                   <span>Написать в WhatsApp</span>
-                </button>
+                </a>
 
-                <button
-                  onClick={handleRouteClick}
+                <a
+                  href="https://yandex.com/maps/?text=%D0%9A%D0%B0%D1%80%D0%B0%D0%B3%D0%B0%D0%BD%D0%B4%D0%B0+%D1%83%D0%BB%D0%B8%D1%86%D0%B0+%D0%93%D0%BE%D0%B3%D0%BE%D0%BB%D1%8F+53%D0%B0"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full h-12 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white hover:text-brand-deep text-xs font-bold flex items-center justify-center gap-2 cursor-pointer transition-all duration-300"
                 >
                   <Navigation size={15} />
                   <span>Построить маршрут к салону</span>
-                </button>
+                </a>
               </div>
 
             </div>
@@ -226,12 +219,14 @@ export default memo(function Showroom({ onOpenTrigger }: ShowroomProps) {
                 <p className="text-white/60 text-xs leading-relaxed mb-4">
                   Собственный выставочный зал с высокими парковочными местами. Удобно заезжать как со стороны Бухар-Жырау, так и по улице Гоголя.
                 </p>
-                <button
-                  onClick={handleRouteClick}
+                <a
+                  href="https://yandex.com/maps/?text=%D0%9A%D0%B0%D1%80%D0%B0%D0%B3%D0%B0%D0%BD%D0%B4%D0%B0+%D1%83%D0%BB%D0%B8%D1%86%D0%B0+%D0%93%D0%BE%D0%B3%D0%BE%D0%BB%D1%8F+53%D0%B0"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="px-4 h-9 rounded-full bg-white text-brand-deep hover:bg-white/90 text-[10px] font-bold tracking-wide transition-all inline-flex items-center gap-1 cursor-pointer"
                 >
                   Посмотреть на карте
-                </button>
+                </a>
               </div>
 
             </div>
