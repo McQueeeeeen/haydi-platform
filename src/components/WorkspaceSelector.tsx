@@ -184,13 +184,13 @@ export default memo(function WorkspaceSelector({ onTriggerConsultation }: Worksp
                     <img 
                       src={currentRoom.imageUrl} 
                       alt={currentRoom.title} 
-                      className="w-full h-full object-cover filter brightness-65 contrast-102"
+                      className="w-full h-full object-cover filter brightness-[0.92]"
                       loading="eager"
                       width={640}
                       height={280}
                     />
                   </picture>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#160f0c] via-black/25 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
                   
                   {/* Floating pill over image */}
                   <div className="absolute top-4 left-4 glass-pill px-3 py-1 rounded-full text-[10px] text-white font-medium uppercase tracking-[0.1em]">
