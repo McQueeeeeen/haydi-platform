@@ -37,11 +37,14 @@ export default memo(function Header({ onOpenCatalog }: HeaderProps) {
   useEffect(() => {
     if (!isMobileMenuOpen) return;
 
-    const previousOverflow = document.body.style.overflow;
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousDocumentOverflow = document.documentElement.style.overflow;
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
 
     return () => {
-      document.body.style.overflow = previousOverflow;
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousDocumentOverflow;
     };
   }, [isMobileMenuOpen]);
 
@@ -91,10 +94,11 @@ export default memo(function Header({ onOpenCatalog }: HeaderProps) {
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
               className="p-2.5 rounded-full border border-white/10 bg-white/5 text-white/80 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300 relative group cursor-pointer"
+              aria-label="Переключить режим освещения"
               title={theme === 'dark' ? "Включить дневной свет" : "Перейти на ночной свет"}
             >
               {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
-              <span className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-black/80 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+              <span aria-hidden="true" className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-black/80 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
                 {theme === 'dark' ? "Дневной свет" : "Ночной режим"}
               </span>
             </button>
@@ -107,10 +111,11 @@ export default memo(function Header({ onOpenCatalog }: HeaderProps) {
                   ? 'bg-brand-gold/20 border-brand-gold text-brand-gold' 
                   : 'border-white/10 bg-white/5 text-white/80 hover:text-white hover:bg-white/10 hover:border-white/20'
               }`}
+              aria-label="Переключить энергосбережение"
               title={isEnergySaving ? "Выключить эко-режим" : "Энергосбережение (Eco)"}
             >
               {isEnergySaving ? <Leaf size={15} /> : <Zap size={15} />}
-              <span className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-black/80 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+              <span aria-hidden="true" className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-black/80 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
                 {isEnergySaving ? "Eco: Вкл" : "Eco: Выкл"}
               </span>
             </button>

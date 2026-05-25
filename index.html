@@ -11,9 +11,11 @@
     <!-- Performance: Preload the main LCP Hero image locally to avoid layout blank screens -->
     <link 
       rel="preload" 
-      href="/assets/images/hero-desktop.webp" 
+      href="/assets/images/hero-desktop.avif"
+      imagesrcset="/assets/images/hero-mobile.avif 900w, /assets/images/hero-desktop.avif 1800w"
+      imagesizes="100vw"
       as="image" 
-      type="image/webp"
+      type="image/avif"
       fetchpriority="high"
     />
   </head>

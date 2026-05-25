@@ -27,13 +27,24 @@ export default function Modal({ state, onClose }: ModalProps) {
   useEffect(() => {
     if (!state.isOpen) return;
 
-    const previousOverflow = document.body.style.overflow;
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousDocumentOverflow = document.documentElement.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      document.body.style.overflow = previousOverflow;
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousDocumentOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [state.isOpen]);
+  }, [state.isOpen, onClose]);
 
   // Easy phone formatting: +7 (XXX) XXX-XX-XX
   const handlePhoneChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -85,17 +96,6 @@ export default function Modal({ state, onClose }: ModalProps) {
     setError('');
     setSubmitted(true);
 
-    // Simulate successful submission with luxury toast / confirmation feedback
-    setTimeout(() => {
-      // Send message to local storage or console
-      console.log('Haydi Lead Captured:', {
-        name,
-        phone,
-        type: state.type,
-        selection: state.selectionName || 'General Consultation',
-        timestamp: new Date().toISOString()
-      });
-    }, 400);
   };
 
   const isRoomConsult = state.type === 'room';
@@ -123,6 +123,9 @@ export default function Modal({ state, onClose }: ModalProps) {
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="relative w-full max-w-lg overflow-hidden rounded-[32px] border border-white/10 bg-[#1c1410] p-8 md:p-10 shadow-2xl z-10"
             id="lead-capture-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Haydi lead capture"
           >
           {/* Subtle warm lighting gradient splash inside */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-32 bg-brand-gold/10 rounded-full blur-[60px] pointer-events-none" />
@@ -142,7 +145,7 @@ export default function Modal({ state, onClose }: ModalProps) {
                 Haydi.kz / {isRoomConsult ? 'Подбор под помещение' : isCollectConsult ? 'Презентация коллекции' : 'Консультация'}
               </span>
 
-              <h3 className="text-2xl font-bold tracking-tight text-white mb-2 leading-tight">
+              <h3 id="lead-capture-title" className="text-2xl font-bold tracking-tight text-white mb-2 leading-tight">
                 {isRoomConsult ? 'Заказать подбор освещения' : isCollectConsult ? 'Заказать презентацию коллекции' : 'Связаться с экспертом Haydi'}
               </h3>
 
@@ -153,7 +156,7 @@ export default function Modal({ state, onClose }: ModalProps) {
                 </div>
               )}
 
-              <p className="text-sm text-white/60 leading-relaxed mb-6">
+              <p id="lead-capture-description" className="text-sm text-white/60 leading-relaxed mb-6">
                 {isRoomConsult 
                   ? 'Мы подготовим индивидуальный список светильников (люстры, бра, подвесы, споты) под выбранную зону с учетом стиля интерьера.'
                   : 'Мы вышлем полную PDF-презентацию дизайнерской серии, проконсультируем по конфигурациям и сориентируем по наличию.'}

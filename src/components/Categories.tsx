@@ -134,6 +134,7 @@ export default memo(function Categories({ onSelectCategory }: CategoriesProps) {
                       alt={cat.title}
                       className="absolute inset-0 w-full h-full object-cover transform scale-101 group-hover:scale-106 transition-all duration-700 ease-out filter brightness-[0.88] group-hover:brightness-[0.96]"
                       loading="eager"
+                      fetchPriority="low"
                       width={320}
                       height={180}
                     />

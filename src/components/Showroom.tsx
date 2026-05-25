@@ -172,7 +172,7 @@ export default memo(function Showroom({ onOpenTrigger }: ShowroomProps) {
             <div className="rounded-[28px] border border-white/10 overflow-hidden relative group h-[380px] lg:h-full bg-[#140e0c] flex flex-col justify-end">
               
               {/* Stylized vector map system illustration using CSS nodes */}
-              <div className="absolute inset-0 bg-gradient-to-[#150f0c] opacity-90 z-0">
+              <div className="absolute inset-0 bg-[#150f0c] opacity-90 z-0">
                 
                 {/* Vector road pathways simulation */}
                 <svg className="w-full h-full opacity-35" xmlns="http://www.w3.org/2000/svg">

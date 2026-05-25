@@ -233,7 +233,7 @@ export default memo(function Hero({ onOpenTrigger }: HeroProps) {
 
 
       {/* Center ambient halo back-glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-gold/15 rounded-full blur-[160px] pointer-events-none z-1" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-gold/15 rounded-full blur-[160px] pointer-events-none z-[1]" />
 
       {/* Main Hero Elements Content */}
       <motion.div 

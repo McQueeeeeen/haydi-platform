@@ -111,9 +111,36 @@ html {
   animation-play-state: paused;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .animate-marquee-custom {
+    animation: none !important;
+  }
+
+  [class*="blur-["] {
+    filter: none !important;
+    opacity: 0 !important;
+  }
+}
+
 /* Disable or minimize marquee inside Energy-Saving / Eco Mode */
 .eco-mode .animate-marquee-custom {
   animation: none !important;
+}
+
+.eco-mode [class*="blur-["] {
+  filter: none !important;
+  opacity: 0 !important;
 }
 
 /* Disable heavy scaling transforms in Eco Mode */
