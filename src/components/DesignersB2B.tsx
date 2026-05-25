@@ -52,7 +52,7 @@ export default memo(function DesignersB2B({ onOpenTrigger }: DesignersB2BProps) 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
           <div className="lg:col-span-5">
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, ease: easeCurve }}
@@ -66,7 +66,7 @@ export default memo(function DesignersB2B({ onOpenTrigger }: DesignersB2BProps) 
             </motion.div>
 
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, delay: 0.1, ease: easeCurve }}
@@ -78,7 +78,7 @@ export default memo(function DesignersB2B({ onOpenTrigger }: DesignersB2BProps) 
 
           <div className="lg:col-span-7 lg:pt-14">
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, delay: 0.2, ease: easeCurve }}
@@ -94,7 +94,7 @@ export default memo(function DesignersB2B({ onOpenTrigger }: DesignersB2BProps) 
           {benefits.map((benefit, idx) => (
             <motion.div
               key={benefit.title}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.75, delay: idx * 0.08, ease: easeCurve }}
@@ -123,9 +123,9 @@ export default memo(function DesignersB2B({ onOpenTrigger }: DesignersB2BProps) 
 
         {/* Action Centered Row */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-16 text-center"
         >

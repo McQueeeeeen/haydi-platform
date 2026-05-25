@@ -86,7 +86,7 @@ export default memo(function Collections({ onSelectCollection, onOpenCatalog }: 
         {/* Curated Heading Centered */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, ease: easeCurve }}
@@ -100,7 +100,7 @@ export default memo(function Collections({ onSelectCollection, onOpenCatalog }: 
           </motion.div>
 
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, delay: 0.1, ease: easeCurve }}
@@ -110,7 +110,7 @@ export default memo(function Collections({ onSelectCollection, onOpenCatalog }: 
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, delay: 0.2, ease: easeCurve }}
@@ -125,7 +125,7 @@ export default memo(function Collections({ onSelectCollection, onOpenCatalog }: 
           
           {/* Left Column: Big featured block (Novinki) */}
           <motion.div
-            initial={{ opacity: 0, y: 28 }}
+            initial={{ y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, ease: easeCurve }}
@@ -183,7 +183,7 @@ export default memo(function Collections({ onSelectCollection, onOpenCatalog }: 
             {topTwoCards.map((card, idx) => (
               <motion.div
                 key={card.id}
-                initial={{ opacity: 0, y: 28 }}
+                initial={{ y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.8, delay: idx * 0.08, ease: easeCurve }}
@@ -233,7 +233,7 @@ export default memo(function Collections({ onSelectCollection, onOpenCatalog }: 
           {bottomThreeCards.map((card, idx) => (
             <motion.div
               key={card.id}
-              initial={{ opacity: 0, y: 28 }}
+              initial={{ y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.8, delay: idx * 0.08, ease: easeCurve }}
@@ -279,7 +279,7 @@ export default memo(function Collections({ onSelectCollection, onOpenCatalog }: 
 
         {/* Lower CTA - Glass Dark Style */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7, ease: easeCurve }}

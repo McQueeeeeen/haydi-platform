@@ -84,7 +84,7 @@ export default memo(function WorkspaceSelector({ onTriggerConsultation }: Worksp
         {/* Section Heading Centered */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, ease: easeCurve }}
@@ -98,7 +98,7 @@ export default memo(function WorkspaceSelector({ onTriggerConsultation }: Worksp
           </motion.div>
 
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, delay: 0.1, ease: easeCurve }}
@@ -108,7 +108,7 @@ export default memo(function WorkspaceSelector({ onTriggerConsultation }: Worksp
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, delay: 0.2, ease: easeCurve }}
@@ -164,7 +164,7 @@ export default memo(function WorkspaceSelector({ onTriggerConsultation }: Worksp
           {/* Right Panel: Showcase Preview */}
           <div className="lg:col-span-7 flex flex-col">
             {/* Dynamic Card with Slide/Fade Transition */}
-            <AnimatePresence mode="wait">
+            <AnimatePresence>
               <motion.div
                 key={currentRoom.id}
                 initial={{ opacity: 0, x: 20 }}
@@ -185,7 +185,7 @@ export default memo(function WorkspaceSelector({ onTriggerConsultation }: Worksp
                       src={currentRoom.imageUrl} 
                       alt={currentRoom.title} 
                       className="w-full h-full object-cover filter brightness-65 contrast-102"
-                      loading="lazy"
+                      loading="eager"
                       width={640}
                       height={280}
                     />

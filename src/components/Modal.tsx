@@ -24,6 +24,17 @@ export default function Modal({ state, onClose }: ModalProps) {
     }
   }, [state.isOpen, state.type, state.selectionName]);
 
+  useEffect(() => {
+    if (!state.isOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [state.isOpen]);
+
   // Easy phone formatting: +7 (XXX) XXX-XX-XX
   const handlePhoneChange = (e: ChangeEvent<HTMLInputElement>) => {
     let input = e.target.value.replace(/\D/g, ''); // Keep only digits

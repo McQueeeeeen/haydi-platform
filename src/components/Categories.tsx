@@ -72,7 +72,7 @@ export default memo(function Categories({ onSelectCategory }: CategoriesProps) {
       {/* Structured Header centered */}
       <div className="relative z-10 text-center max-w-3xl mx-auto px-4 mb-16">
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
@@ -86,7 +86,7 @@ export default memo(function Categories({ onSelectCategory }: CategoriesProps) {
         </motion.div>
 
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
@@ -96,7 +96,7 @@ export default memo(function Categories({ onSelectCategory }: CategoriesProps) {
         </motion.h2>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
@@ -133,7 +133,7 @@ export default memo(function Categories({ onSelectCategory }: CategoriesProps) {
                       src={cat.imageUrl}
                       alt={cat.title}
                       className="absolute inset-0 w-full h-full object-cover transform scale-101 group-hover:scale-106 transition-all duration-700 ease-out filter brightness-50 contrast-102"
-                      loading="lazy"
+                      loading="eager"
                       width={320}
                       height={180}
                     />
@@ -161,9 +161,8 @@ export default memo(function Categories({ onSelectCategory }: CategoriesProps) {
 
       {/* Gentle helper label beneath */}
       <motion.div 
-        initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: '-80px' }}
         transition={{ delay: 0.5 }}
         className="text-[11px] text-white/30 tracking-wider text-center mt-8 z-10"
       >

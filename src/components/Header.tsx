@@ -1,4 +1,4 @@
-import { useState, useEffect, memo } from 'react';
+import { useState, useEffect, useRef, memo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, HelpCircle, ArrowRight } from 'lucide-react';
 
@@ -17,14 +17,31 @@ const menuItems = [
 export default memo(function Header({ onOpenCatalog }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const isScrolledRef = useRef(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const nextIsScrolled = window.scrollY > 20;
+      if (isScrolledRef.current !== nextIsScrolled) {
+        isScrolledRef.current = nextIsScrolled;
+        setIsScrolled(nextIsScrolled);
+      }
     };
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isMobileMenuOpen]);
 
   return (
     <>
@@ -92,7 +109,7 @@ export default memo(function Header({ onOpenCatalog }: HeaderProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-x-4 top-24 z-30 lg:hidden rounded-3xl border border-white/15 bg-[#18120e]/95 backdrop-blur-2xl p-6 shadow-2xl flex flex-col gap-5"
+            className="fixed inset-x-4 top-24 z-40 lg:hidden rounded-3xl border border-white/15 bg-[#18120e]/95 backdrop-blur-2xl p-6 shadow-2xl flex flex-col gap-5"
           >
             <div className="flex flex-col gap-3">
               {menuItems.map((item, idx) => (

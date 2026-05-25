@@ -26,9 +26,9 @@ export default memo(function Footer({ onOpenConsultation, onOpenCatalog }: Foote
         <div className="text-center max-w-4xl mx-auto mb-24 relative z-10">
           
           <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
+            initial={{ scale: 0.98 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
             className="mb-6 inline-block"
           >
@@ -38,9 +38,9 @@ export default memo(function Footer({ onOpenConsultation, onOpenCatalog }: Foote
           </motion.div>
 
           <motion.h2
-            initial={{ opacity: 0, y: 22 }}
+            initial={{ y: 22 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
             className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-[-0.03em] leading-[0.98] mb-6"
           >
@@ -48,9 +48,9 @@ export default memo(function Footer({ onOpenConsultation, onOpenCatalog }: Foote
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 22 }}
+            initial={{ y: 22 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
             className="text-white/55 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
           >
@@ -59,9 +59,9 @@ export default memo(function Footer({ onOpenConsultation, onOpenCatalog }: Foote
 
           {/* Dual Buttons CTA limit */}
           <motion.div
-            initial={{ opacity: 0, y: 22 }}
+            initial={{ y: 22 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >

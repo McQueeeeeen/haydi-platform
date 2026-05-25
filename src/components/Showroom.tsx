@@ -40,7 +40,7 @@ export default memo(function Showroom({ onOpenTrigger }: ShowroomProps) {
         {/* Centered Heading */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, ease: easeCurve }}
@@ -54,7 +54,7 @@ export default memo(function Showroom({ onOpenTrigger }: ShowroomProps) {
           </motion.div>
 
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, delay: 0.1, ease: easeCurve }}
@@ -64,7 +64,7 @@ export default memo(function Showroom({ onOpenTrigger }: ShowroomProps) {
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, delay: 0.2, ease: easeCurve }}

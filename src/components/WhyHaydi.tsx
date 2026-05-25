@@ -51,7 +51,7 @@ export default memo(function WhyHaydi() {
         {/* Centered Heading */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           <motion.div
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, ease: easeCurve }}
@@ -65,7 +65,7 @@ export default memo(function WhyHaydi() {
           </motion.div>
 
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, delay: 0.1, ease: easeCurve }}
@@ -75,7 +75,7 @@ export default memo(function WhyHaydi() {
           </motion.h2>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, delay: 0.2, ease: easeCurve }}
@@ -90,7 +90,7 @@ export default memo(function WhyHaydi() {
           {points.map((point, idx) => (
             <motion.div
               key={point.title}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.75, delay: idx * 0.08, ease: easeCurve }}
