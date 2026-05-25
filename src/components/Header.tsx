@@ -1,6 +1,7 @@
 import { useState, useEffect, memo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, HelpCircle, ArrowRight } from 'lucide-react';
+import { Menu, X, HelpCircle, ArrowRight, Sun, Moon, Leaf, Zap } from 'lucide-react';
+import { useApp } from '../context/AppContext';
 
 interface HeaderProps {
   onOpenCatalog: () => void;
@@ -17,6 +18,7 @@ const menuItems = [
 export default memo(function Header({ onOpenCatalog }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { theme, setTheme, isEnergySaving, setIsEnergySaving } = useApp();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,7 +34,9 @@ export default memo(function Header({ onOpenCatalog }: HeaderProps) {
         <div 
           className={`h-16 w-full rounded-full flex items-center justify-between px-6 md:px-8 border backdrop-blur-xl transition-all duration-500 shadow-lg ${
             isScrolled 
-              ? 'bg-[#150f0c]/90 border-white/15 shadow-black/40' 
+              ? theme === 'dark'
+                ? 'bg-[#150f0c]/90 border-white/15 shadow-black/40' 
+                : 'bg-[#faf8f5]/90 border-brand-border-strong shadow-brand-overlay/10'
               : 'bg-white/[0.04] border-white/10'
           }`}
           id="main-navigation-header"
@@ -63,8 +67,37 @@ export default memo(function Header({ onOpenCatalog }: HeaderProps) {
             ))}
           </nav>
 
-          {/* Right Area: CTA button (Desktop) + Burger (Mobile) */}
+          {/* Right Area: Mode Switches + CTA button (Desktop) + Burger (Mobile) */}
           <div className="flex items-center gap-3">
+            
+            {/* Theme Toggle (Desktop Only) */}
+            <button
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="p-2.5 rounded-full border border-white/10 bg-white/5 text-white/80 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300 relative group cursor-pointer"
+              title={theme === 'dark' ? "Включить дневной свет" : "Перейти на ночной свет"}
+            >
+              {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+              <span className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-black/80 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                {theme === 'dark' ? "Дневной свет" : "Ночной режим"}
+              </span>
+            </button>
+
+            {/* Energy Saving (Desktop Only) */}
+            <button
+              onClick={() => setIsEnergySaving(!isEnergySaving)}
+              className={`p-2.5 rounded-full border transition-all duration-300 relative group cursor-pointer ${
+                isEnergySaving 
+                  ? 'bg-brand-gold/20 border-brand-gold text-brand-gold' 
+                  : 'border-white/10 bg-white/5 text-white/80 hover:text-white hover:bg-white/10 hover:border-white/20'
+              }`}
+              title={isEnergySaving ? "Выключить эко-режим" : "Энергосбережение (Eco)"}
+            >
+              {isEnergySaving ? <Leaf size={15} /> : <Zap size={15} />}
+              <span className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-black/80 text-white text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                {isEnergySaving ? "Eco: Вкл" : "Eco: Выкл"}
+              </span>
+            </button>
+
             <button
               onClick={onOpenCatalog}
               className="hidden sm:inline-flex items-center justify-center px-6 h-10 rounded-full border border-white/20 bg-transparent text-xs font-semibold text-white/90 hover:bg-white hover:text-brand-deep cursor-pointer transition-all duration-300"
@@ -112,6 +145,31 @@ export default memo(function Header({ onOpenCatalog }: HeaderProps) {
 
             <div className="h-px bg-white/10 my-1" />
 
+            {/* Mobile Mode selectors */}
+            <div className="grid grid-cols-2 gap-2 my-1">
+              <button
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className="flex items-center justify-center gap-2 h-11 rounded-full border border-white/10 bg-white/5 text-xs font-semibold text-white/90"
+              >
+                {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+                <span>{theme === 'dark' ? "Дневной" : "Ночной"}</span>
+              </button>
+
+              <button
+                onClick={() => setIsEnergySaving(!isEnergySaving)}
+                className={`flex items-center justify-center gap-2 h-11 rounded-full border text-xs font-semibold transition-all ${
+                  isEnergySaving 
+                    ? 'border-brand-gold bg-brand-gold/15 text-brand-gold'
+                    : 'border-white/10 bg-white/5 text-white/90'
+                }`}
+              >
+                {isEnergySaving ? <Leaf size={15} /> : <Zap size={15} />}
+                <span>{isEnergySaving ? "Eco: Вкл" : "Eco: Выкл"}</span>
+              </button>
+            </div>
+
+            <div className="h-px bg-white/10 my-1" />
+
             <div className="flex flex-col gap-2.5">
               <button
                 onClick={() => {
@@ -130,3 +188,4 @@ export default memo(function Header({ onOpenCatalog }: HeaderProps) {
     </>
   );
 });
+

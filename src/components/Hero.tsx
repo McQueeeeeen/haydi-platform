@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { motion } from 'motion/react';
 import { ArrowDown } from 'lucide-react';
+import { useApp } from '../context/AppContext';
 
 interface HeroProps {
   onOpenTrigger: () => void;
@@ -179,6 +180,7 @@ function BrandLogo({ name }: { name: string }) {
 }
 
 export default memo(function Hero({ onOpenTrigger }: HeroProps) {
+  const { theme } = useApp();
   // Fluid transition animation curves
   const easeCurve = [0.22, 1, 0.36, 1];
 
@@ -217,17 +219,18 @@ export default memo(function Hero({ onOpenTrigger }: HeroProps) {
           <img 
             src="/assets/images/hero-desktop.webp" 
             alt="Haydi Luxury Glass & Light Space" 
-            className="w-full h-full object-cover scale-102 transform filter brightness-65 contrast-102"
+            className={`w-full h-full object-cover scale-102 transform transition-all duration-500 filter ${theme === 'dark' ? 'brightness-65 contrast-102' : 'brightness-[0.88] contrast-[0.98]'}`}
             fetchPriority="high"
             width={1800}
             height={1125}
           />
         </picture>
         {/* Absolute High-Contrast Warm Cinematic Film Overlays */}
-        <div className="absolute inset-0 bg-black/45 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-[#211612]/30 mix-blend-color-burn" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#150f0c] via-[#150f0c]/60 to-black/20" />
+        <div className={`absolute inset-0 transition-opacity duration-500 ${theme === 'dark' ? 'bg-black/45 mix-blend-multiply' : 'bg-[#fffdfa]/15 mix-blend-multiply'}`} />
+        <div className={`absolute inset-0 transition-opacity duration-500 ${theme === 'dark' ? 'bg-[#211612]/30 mix-blend-color-burn' : 'bg-transparent'}`} />
+        <div className="absolute inset-0 dark-overlay" />
       </div>
+
 
       {/* Center ambient halo back-glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-gold/15 rounded-full blur-[160px] pointer-events-none z-1" />

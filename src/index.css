@@ -1,20 +1,72 @@
 @import "tailwindcss";
 
+:root {
+  --brand-base: #18120e;
+  --brand-deep: #150f0c;
+  --brand-overlay: #2e1f1b;
+  --brand-gold: #c39e72;
+  --brand-border: rgba(255, 255, 255, 0.08);
+  --brand-border-strong: rgba(255, 255, 255, 0.15);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-muted: rgba(255, 255, 255, 0.5);
+  
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: 20px;
+  --glass-capsule-bg: rgba(255, 255, 255, 0.06);
+  --glass-capsule-border: rgba(255, 255, 255, 0.10);
+  --glass-pill-bg: rgba(255, 255, 255, 0.05);
+  --glass-pill-border: rgba(255, 255, 255, 0.08);
+  --glass-dropdown-bg: rgba(24, 18, 14, 0.95);
+  --glass-dropdown-border: rgba(255, 255, 255, 0.12);
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --marquee-speed: 44s;
+}
+
+:root.light-mode {
+  --brand-base: #f3efe9;      /* Warm premium Travertine marble / cream background */
+  --brand-deep: #FAF8F5;      /* Off-white warm gallery wall */
+  --brand-overlay: #eae3da;   /* Sleek clean sandy wood overlays */
+  --brand-gold: #aa743c;      /* Fine aged brass/patina gold for flawless contrast */
+  --brand-border: rgba(46, 31, 27, 0.08);
+  --brand-border-strong: rgba(46, 31, 27, 0.15);
+  --text-primary: #2c1a12;     /* Prestigious warm obsidian/bronze contrast */
+  --text-secondary: rgba(60, 40, 32, 0.82);
+  --text-muted: rgba(60, 40, 32, 0.55);
+  
+  --glass-bg: rgba(44, 26, 18, 0.03);
+  --glass-border: rgba(44, 26, 18, 0.08);
+  --glass-blur: 16px;
+  --glass-capsule-bg: rgba(44, 26, 18, 0.05);
+  --glass-capsule-border: rgba(44, 26, 18, 0.11);
+  --glass-pill-bg: rgba(44, 26, 18, 0.04);
+  --glass-pill-border: rgba(44, 26, 18, 0.08);
+  --glass-dropdown-bg: rgba(250, 248, 245, 0.96);
+  --glass-dropdown-border: rgba(44, 26, 18, 0.12);
+  --shadow-color: rgba(44, 26, 18, 0.06);
+}
+
+:root.eco-mode {
+  --glass-blur: 0px;
+}
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --color-brand-base: #18120e;
-  --color-brand-deep: #150f0c;
-  --color-brand-overlay: #2e1f1b;
-  --color-brand-gold: #c39e72;
+  --color-brand-base: var(--brand-base);
+  --color-brand-deep: var(--brand-deep);
+  --color-brand-overlay: var(--brand-overlay);
+  --color-brand-gold: var(--brand-gold);
 }
 
 @layer base {
   body {
-    background-color: #150f0c;
-    color: #ffffff;
+    background-color: var(--brand-deep);
+    color: var(--text-primary);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
 }
 
@@ -28,15 +80,15 @@ html {
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #150f0c;
+  background: var(--brand-deep);
 }
 ::-webkit-scrollbar-thumb {
-  background: #2e1f1b;
+  background: var(--brand-overlay);
   border-radius: 999px;
-  border: 2px solid #150f0c;
+  border: 2px solid var(--brand-deep);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #c39e72;
+  background: var(--brand-gold);
 }
 
 /* Custom marquee animation with hardware acceleration */
@@ -50,7 +102,7 @@ html {
 }
 
 .animate-marquee-custom {
-  animation: marquee-cycle 44s linear infinite;
+  animation: marquee-cycle var(--marquee-speed, 44s) linear infinite;
   will-change: transform;
   backface-visibility: hidden;
 }
@@ -59,32 +111,95 @@ html {
   animation-play-state: paused;
 }
 
-/* Glass effect utilities */
+/* Disable or minimize marquee inside Energy-Saving / Eco Mode */
+.eco-mode .animate-marquee-custom {
+  animation: none !important;
+}
+
+/* Disable heavy scaling transforms in Eco Mode */
+.eco-mode img {
+  transform: none !important;
+}
+.eco-mode .group:hover img,
+.eco-mode *:hover img {
+  transform: none !important;
+}
+
+/* Disable backdrop blur filtering in Eco Mode to boost FPS and battery */
+.glass-capsule, .glass-pill, .glass-card, .glass-dropdown {
+  transition: background 0.4s ease, border 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+/* Glass effect utilities responding to CSS vars */
 .glass-capsule {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  backdrop-filter: blur(20px);
+  background: var(--glass-capsule-bg);
+  border: 1px solid var(--glass-capsule-border);
+  backdrop-filter: blur(var(--glass-blur, 20px));
 }
 
 .glass-pill {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
+  background: var(--glass-pill-bg);
+  border: 1px solid var(--glass-pill-border);
+  backdrop-filter: blur(var(--glass-blur, 12px));
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(16px);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur, 16px));
 }
 
 .glass-dropdown {
-  background: rgba(24, 18, 14, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(24px);
+  background: var(--glass-dropdown-bg);
+  border: 1px solid var(--glass-dropdown-border);
+  backdrop-filter: blur(var(--glass-blur, 24px));
+}
+
+/* Light mode specific classes mapping */
+.light-mode .text-white {
+  color: var(--text-primary) !important;
+}
+.light-mode .text-white\/90 { color: var(--text-primary) !important; }
+.light-mode .text-white\/80 { color: var(--text-primary) !important; }
+.light-mode .text-white\/70 { color: var(--text-secondary) !important; }
+.light-mode .text-white\/60 { color: var(--text-secondary) !important; }
+.light-mode .text-white\/50 { color: var(--text-muted) !important; }
+.light-mode .text-white\/40 { color: var(--text-muted) !important; }
+.light-mode .text-white\/30 { color: var(--brand-border) !important; }
+.light-mode .text-white\/20 { color: var(--brand-border) !important; }
+
+/* Invert glass hover settings */
+.light-mode .hover\:bg-white\/10:hover {
+  background-color: rgba(44, 26, 18, 0.08) !important;
+}
+.light-mode .hover\:bg-white:hover {
+  background-color: var(--text-primary) !important;
+  color: var(--brand-deep) !important;
+}
+
+/* Dark gradient overlays on light mode should become beautifully soft warm light gradients */
+.light-mode .dark-overlay {
+  background: linear-gradient(to bottom, rgba(250, 248, 245, 0.15) 0%, rgba(250, 248, 245, 0.85) 100%) !important;
+}
+.light-mode .bg-gradient-to-t.from-black\/70 {
+  background-image: linear-gradient(to top, rgba(250, 248, 245, 0.85) 0%, rgba(250, 248, 245, 0.2) 75%, transparent 100%) !important;
+}
+.light-mode .bg-gradient-to-t.from-\[\#150f0c\] {
+  background-image: linear-gradient(to top, var(--brand-deep) 0%, rgba(250, 248, 245, 0.3) 65%, transparent 100%) !important;
+}
+.light-mode .bg-black\/50 {
+  background-color: rgba(44, 26, 18, 0.12) !important;
+}
+
+/* Light mode specific selections */
+.light-mode ::selection {
+  background-color: var(--brand-gold);
+  color: #fff;
 }
 
 /* Premium gradient overlay for visual unity */
 .dark-overlay {
   background: linear-gradient(to bottom, rgba(21, 15, 12, 0.3) 0%, rgba(21, 15, 12, 0.9) 100%);
+  transition: background 0.4s ease;
 }
+

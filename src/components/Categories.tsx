@@ -132,7 +132,7 @@ export default memo(function Categories({ onSelectCategory }: CategoriesProps) {
                     <img
                       src={cat.imageUrl}
                       alt={cat.title}
-                      className="absolute inset-0 w-full h-full object-cover transform scale-101 group-hover:scale-106 transition-all duration-700 ease-out filter brightness-75 group-hover:brightness-[0.85]"
+                      className="absolute inset-0 w-full h-full object-cover transform scale-101 group-hover:scale-106 transition-all duration-700 ease-out filter brightness-[0.88] group-hover:brightness-[0.96]"
                       loading="lazy"
                       width={320}
                       height={180}
@@ -140,8 +140,8 @@ export default memo(function Categories({ onSelectCategory }: CategoriesProps) {
                   </picture>
 
                   {/* Glass tint overlay on hover */}
-                  <div className="absolute inset-0 bg-[#150f0c]/15 group-hover:bg-transparent transition-all duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
+                  <div className="absolute inset-0 bg-[#150f0c]/5 group-hover:bg-transparent transition-all duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
 
                   {/* Category details inside */}
                   <div className="absolute inset-0 p-5 flex flex-col justify-end">
